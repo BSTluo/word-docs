@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress';
 export default defineConfig({
   title: "Reifuu-Docs",
   description: "Reifuu-Docs",
+  base: ".",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
