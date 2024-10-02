@@ -2,7 +2,7 @@
 outline: [2,5]
 ---
 
-# 词库主插件
+# koishi-plugin-word-core<br>[词库主插件]
 
 ## 简介
 
