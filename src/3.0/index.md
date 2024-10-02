@@ -2,35 +2,42 @@
 
 这里是词库文档的导航文档
 
-## 基础教程
+## 基础教程<br>
+**(word-core)**
+
+此插件为基础语法包，附属插件都依赖此插件运行
 
 [戳我前往](./core-basic/index.md)
 
-## 插件/附属插件开发者教程
+## 附属插件：语法包扩展教程<br>
+**(word-core-grammar-basic)**
 
-[戳我前往](./core-dev/index.md)
-
-## 库开发者教程(语法包教程)
+此插件为基础语法扩展了25个额外语法
 
 [戳我前往](./grammar-basic/index.md)
 
-## 附属插件：词库定时触发器
+## 附属插件：词库定时触发器教程<br>
+**(word-core-event-trigger-basic)**
 
 此插件为词库添加了一个定时触发器，可以定时触发某个触发词
 
 [戳我前往](./event-trigger-basic/index.md)
 
-## 附属插件：蔷薇花园事件触发器
+## 附属插件：蔷薇花园事件触发器教程<br>
+**(word-core-iirose-event-trigger)**
 
 此插件在蔷薇花园发生某些事件的时候，触发词库的某个(些)关键词
 
 [戳我前往](./iirose-event-trigger/index.md)
 
-# 找到我
+## 插件&附属插件开发者教程
 
-如果在使用中遇到bug
-或者有问题需要询问我的话！
+[戳我前往](./core-dev/index.md)
+
+### 联系方式
+
+如果在使用中遇到bug，或者有问题需要询问我<br>
 欢迎随时联系我！
 
-QQ：1946831552
-iirose： [@5b0fe8a3b1ff2@] 
+QQ：1946831552<br>
+iirose： [@5b0fe8a3b1ff2@]
