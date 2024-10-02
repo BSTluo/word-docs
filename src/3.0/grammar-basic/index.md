@@ -1,3 +1,7 @@
+---
+outline: [1,2]
+---
+
 # koishi-plugin-word-core-grammar-basic [词库引擎，基础语法扩展] 
 
 ***
