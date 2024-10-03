@@ -61,8 +61,10 @@ corn格式在线生成器：[https://cron.qqe2.com/](https://cron.ciding.cc/)
 
 比如我们想让bot每隔3分钟发一句“哈哈”
 
-1. `word.newTimer 滴滴答 "* */3 * * * *"`
-2. `Word.add 滴滴答 哈哈`
+```
+1. word.newTimer 滴滴答 "* */3 * * * *"
+2. word.add 滴滴答 哈哈
+```
 
 设置好如上步骤，bot回复后就会自动每隔3分钟发一次`哈哈`
 
@@ -81,7 +83,3 @@ corn格式在线生成器：[https://cron.qqe2.com/](https://cron.ciding.cc/)
 - 说明：
 
 查看词库的所有触发器
-
-##### 鸣谢
-
-感谢小蛮(uid:5fe8c814c6632)的教程完善！
