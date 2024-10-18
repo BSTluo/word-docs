@@ -1,5 +1,5 @@
 ---
-outline: [2,3]
+outline: [2,4]
 ---
 
 # word-core[开发指南]
@@ -103,6 +103,8 @@ ctx.on("message", session=>{
 })
 ```
 
+#### word.driver.start(session, str=>void)
+
 `ctx.word.driver.start`做了以下的工作：
 
 1. 进行词库搜索，若并未搜索到此`输入的句子`不为词库的`触发句`，则下一步
@@ -111,8 +113,6 @@ ctx.on("message", session=>{
 4. 若在此时发现输入的为词库的`触发句`，则寻找这个`触发句所在的词库`（若多个词库则随机选择一个）
 5. 进入目标词库后，获取这个`触发句`的`回答句列表`
 6. 随机挑选一个`回答句`进行解析，若成功解释则`ctx.word.driver.start` 的第二个参数的回调参数会获取到 `解释的结果` ，否则会收到`null`
-
-#### word.driver.start(session, str=>void)
 
 session：`Session | {username:string , userId:string , channelId:string , content:string}` 
 
@@ -139,6 +139,25 @@ ctx.word.driver.start({
 
 // 此时str为"你也好"
 ```
+
+#### word.driver.parMsg(msg, wordParConfig, session, matchList)
+
+使用词库解析器解析一个字符串
+
+msg：需要解析的字符串
+
+wordParConfig：文本的词库配置
+
+session：koishi的session
+
+matchList：输入的匹配列表
+
+返回值：解析完成后的字符串
+
+|参数名称|参数详细说明|
+|--|--|
+|wordParConfig|需要填写文本的词库配置，其他内容词库现有的暂时都用不上，目前需要填写的是`{saveDB:"存储格"}`|
+|matchList|触发时的匹配列表（这一项可空），词库部分语法需要用到触发时，正则匹配到的字符串。如`(#that)`语法，它需要获取`(@)`匹配到的内容，此时你可以填写：`{"(@)": ["对方用户"]}`，格式大概就是：`{正则或词库正则输入替换:["匹配到的内容"]}`|
 
 ### 4. word.editor [词库编辑器相关]
 
