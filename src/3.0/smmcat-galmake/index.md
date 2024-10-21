@@ -2,7 +2,7 @@
 outline: [2,3]
 ---
 
-# koishi-plugin-smmcat-selfhelp<br>[自助菜单]
+# koishi-plugin-smmcat-galmake<br>[自助菜单]
 
 ## 简介
 
