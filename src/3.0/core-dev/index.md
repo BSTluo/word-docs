@@ -753,14 +753,14 @@ value：`string` 配置的值
 
 uid：`string` 用户id
 
-返回值：`Promise<Record<string, Record<string, number>>>` 背包数据
+返回值：`Promise<Record<string, Record<string, number | string[]>>>` 背包数据
 
 用户背包内容一般为：
 
 ```typescript
 {
   [存储格名:string]: {
-    [物品名称:string]: 数量:number
+    [物品名称:string]: 数量:number | string[]
   }
 }
 ```
@@ -783,7 +783,7 @@ cell：`string` 存储格
 
 itemName：`string` 物品名称
 
-返回值：`Promise<number | null>` 存在的数量数量或者null
+返回值：`Promise<number | null | string[]>` 存在的数量数量或者null或是列表内容
 
 #### word.user.setEditWord(uid, newDB)
 
@@ -793,7 +793,7 @@ uid: `string` 用户id
 
 newDB：`string` 需要编辑的库
 
-#### word.user.updateItem(uid, cell, itemName, amount)
+#### word.user.updateItem(uid, cell, itemName, itemData)
 
 为用户某物品的数量
 
@@ -803,7 +803,7 @@ cell：`string` 存储格
 
 itemName：`string` 物品名称
 
-amount：`number` 物品数量
+itemData：`number | string[]` 物品数量/物品值
 
 #### word.user.updateData(uid, data)
 
@@ -811,7 +811,7 @@ amount：`number` 物品数量
 
 uid：`string` 用户id
 
-data：`Record<string, Record<string, number>>`
+data：`Record<string, Record<string, number | string[]>>`
 
 data的格式必须为：
 
