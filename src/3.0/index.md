@@ -30,6 +30,13 @@
 
 [戳我前往](./iirose-event-trigger/index.md)
 
+## 联动插件：自助菜单
+**(smmcat-galmake)**
+
+无需学习写代码，通过创建文件夹生成对应映射关系的多级菜单选项的简单自助菜单插件
+
+[戳我前往](./smmcat-galmake/index.md)
+
 ## 插件&附属插件开发者教程
 
 [戳我前往](./core-dev/index.md)
