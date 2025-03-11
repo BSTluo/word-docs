@@ -483,7 +483,7 @@ inData.internal
 
 ```typescript
 // 我们像这样添加一个词库问答
-word.add 测试 (test:1233,4566,7899)
+word.add 测试 (test:1233:4566:7899)
 
 // 并且创建一个test语法包
 ctx.word.statement.addStatement('test', async (inData, session) => {
