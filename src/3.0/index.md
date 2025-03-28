@@ -16,7 +16,7 @@
 
 [戳我前往](./grammar-basic/index.md)
 
-## 附属插件：词库定时触发器教程<br>
+## 附属插件：词库基础触发器教程<br>
 **(word-core-event-trigger-basic)**
 
 此插件为词库添加了一个定时触发器，可以定时触发某个触发词
