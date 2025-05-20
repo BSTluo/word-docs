@@ -12,9 +12,16 @@
 ## 附属插件：语法包扩展教程<br>
 **(word-core-grammar-basic)**
 
-此插件为基础语法扩展了25个额外语法
+此插件为基础语法扩展了若干个额外语法
 
 [戳我前往](./grammar-basic/index.md)
+
+## 附属插件：AI召唤器
+**(word-core-chatai)**
+
+此插件为基础语法扩展了1个调用ai的语法
+
+[戳我前往](./chatai/index.md)
 
 ## 附属插件：词库基础触发器教程<br>
 **(word-core-event-trigger-basic)**
