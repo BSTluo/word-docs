@@ -1,5 +1,5 @@
 ---
-outline: [2,4]
+outline: [2,5]
 ---
 
 # word-core[开发指南]
@@ -10,11 +10,11 @@ outline: [2,4]
 
 ## 开发说明
 
-### 1. word.cache [词库缓存相关]
+### word.cache [词库缓存相关]
 
 词库每次启动的时候会建立一个缓存，存储着每个触发词所在的库
 
-#### WordCache
+##### 1. WordCache
 
 词库缓存
 
@@ -26,7 +26,7 @@ outline: [2,4]
 }
 ```
 
-#### word.cache.addCache(q, dbName)
+##### 2. word.cache.addCache(q, dbName)
 
 标记某触发句存储于某词库
 
@@ -36,7 +36,7 @@ dbName: `string` 所存储的库
 
 返回值：无
 
-#### word.cache.rmCache(q, dbName)
+##### 3. word.cache.rmCache(q, dbName)
 
 取消标记某触发句存储于某词库
 
@@ -46,29 +46,31 @@ dbName: `string` 所存储的库
 
 返回值：无
 
-#### word.cache.cacheRefresh()
+##### 4. word.cache.cacheRefresh()
 
 重建缓存
 
 返回值：无
 
-#### word.cache.getCache()
+##### 5. word.cache.getCache()
 
 获取当前的缓存
 
 返回值：`WordCache` 词库缓存
 
-#### word.cache.nowCache
+##### 6. word.cache.nowCache
 
 当前的缓存
 
 返回值：`WordCache` 词库缓存
 
-### 2. word.config [词库核心配置相关]
+***
+
+### word.config [词库核心配置相关]
 
 词库核心的配置，配置一般为键值对
 
-#### word.config.getConfig(key)
+##### 1. word.config.getConfig(key)
 
 获取配置
 
@@ -76,7 +78,7 @@ key：`string` 配置的键
 
 返回值：`Promise<string | number | string[] | number[] | Record<string, string>>`
 
-#### word.config.updateConfig(key,value)
+##### 2. word.config.updateConfig(key,value)
 
 更新(新建)配置
 
@@ -86,7 +88,9 @@ value: `string | number | string[] | number[] | Record<string, string>` 配置�
 
 返回值：`Promise<boolean>`
 
-### 3. word.driver [词库解释器相关]
+***
+
+### word.driver [词库解释器相关]
 
 词库通过此解释器来获取输入的`触发句`的`回复句`，并且解析`回复句`的内容
 
@@ -103,7 +107,7 @@ ctx.on("message", session=>{
 })
 ```
 
-#### word.driver.start(session, str=>void)
+##### 1. word.driver.start(session, str=>void)
 
 `ctx.word.driver.start`做了以下的工作：
 
@@ -140,7 +144,7 @@ ctx.word.driver.start({
 // 此时str为"你也好"
 ```
 
-#### word.driver.parMsg(msg, wordParConfig, session, matchList)
+##### 2. word.driver.parMsg(msg, wordParConfig, session, matchList)
 
 使用词库解析器解析一个字符串
 
@@ -159,7 +163,9 @@ matchList：输入的匹配列表
 |wordParConfig|需要填写文本的词库配置，其他内容词库现有的暂时都用不上，目前需要填写的是`{saveDB:"存储格"}`|
 |matchList|触发时的匹配列表（这一项可空），词库部分语法需要用到触发时，正则匹配到的字符串。如`(#that)`语法，它需要获取`(@)`匹配到的内容，此时你可以填写：`{"(@)": ["对方用户"]}`，格式大概就是：`{正则或词库正则输入替换:["匹配到的内容"]}`|
 
-### 4. word.editor [词库编辑器相关]
+***
+
+### word.editor [词库编辑器相关]
 
 词库编辑器是用于增改查删对话库的
 
@@ -179,7 +185,7 @@ matchList：输入的匹配列表
 }
 ```
 
-#### word.editor.addAuthor(name, uid, authorID)
+##### 1. word.editor.addAuthor(name, uid, authorID)
 
 添加一名新作者到当前某的库中
 
@@ -191,7 +197,7 @@ authorID：`string` 被添加人的id
 
 返回值：`Promise<"您不是作者，无权操作" | "添加完成" | "此作者已存在">`
 
-#### word.editor.removeAuthor(name, uid, authorID)
+##### 2. word.editor.removeAuthor(name, uid, authorID)
 
 从某词库中删除一名作者
 
@@ -203,7 +209,7 @@ authorID：`string` 被删除人的id
 
 返回值：`Promise<"您不是作者，无权操作" | "此作者不存在" | "已删除作者">`
 
-#### word.editor.getAuthor(name)
+##### 3. word.editor.getAuthor(name)
 
 获取某个词库的作者组
 
@@ -211,7 +217,7 @@ name：`string` 目标词库名
 
 返回值：`Promise<string[]>` 作者组
 
-#### word.editor.isAuthor(name, authorID)
+##### 4. word.editor.isAuthor(name, authorID)
 
 查看某人是否有作者权限
 
@@ -221,7 +227,7 @@ authorID：`string` 被查询者的id
 
 返回值：`Promise<boolean>` 是否拥有
 
-#### word.editor.addWordItem(name, uid, q, a)
+##### 5. word.editor.addWordItem(name, uid, q, a)
 
 添加一条机器人问答
 
@@ -235,7 +241,7 @@ a：`string` 回复句
 
 返回值：`Promise<number | "您不是作者，无权操作">`
 
-#### word.editor.rmWordItem(name, uid, q, list)
+##### 6. word.editor.rmWordItem(name, uid, q, list)
 
 删除一条机器人问答
 
@@ -249,7 +255,7 @@ list：`number | "all"` 需要删除的词条对应的序号
 
 返回值：`Promise<"您不是作者，无权操作" | "此触发词不存在" | "超过触发词的回答上限" | "over">`
 
-#### word.editor.getQuestion(q)
+##### 7. word.editor.getQuestion(q)
 
 查找词条（查询某触发句所在的词库）
 
@@ -257,7 +263,7 @@ q：`string` 触发句
 
 返回值：`Promise<string[]>` 包含此词条的数组
 
-#### word.editor.readWord(name)
+##### 8. word.editor.readWord(name)
 
 获取某个词库的存储
 
@@ -279,7 +285,7 @@ name：`string` 词库名
 }
 ```
 
-#### word.editor.updateWord(name, data)
+##### 9. word.editor.updateWord(name, data)
 
 更新/写入词库
 
@@ -301,7 +307,7 @@ data：
 }
 ```
 
-#### word.editor.readSaveCell(name, uid)
+##### 10. word.editor.readSaveCell(name, uid)
 
 获取某词库的存储格
 
@@ -311,7 +317,7 @@ uid：`string` 你的id
 
 返回结果：`Promise<string>`
 
-#### word.editor.setSaveCell(name, cell, uid)
+##### 11. word.editor.setSaveCell(name, cell, uid)
 
 设置某词库的存储格
 
@@ -323,7 +329,7 @@ uid：`string` 你的id
 
 返回值：`Promise<boolean | "你不是作者" | "无此词库">`
 
-#### word.editor.resetSaveCell(name, uid)
+##### 12. word.editor.resetSaveCell(name, uid)
 
 重设存储格到默认
 
@@ -333,13 +339,13 @@ uid：`string` 你的id
 
 返回值：`Promise<boolean | "你不是作者" | "无此词库">`
 
-#### word.editor.getWordList()
+##### 13. word.editor.getWordList()
 
 获取当前所拥有的词库列表
 
 返回值：`Promise<string[]>` 词库列表
 
-#### word.editor.removeWord(name)
+##### 14. word.editor.removeWord(name)
 
 删除词库到回收站
 
@@ -347,7 +353,7 @@ name：`string` 目标词库名
 
 返回值：`Promise<"词库列表不存在此词库" | "ok">`
 
-#### word.editor.restoreWord(name)
+##### 15. word.editor.restoreWord(name)
 
 恢复回收站的词库
 
@@ -355,13 +361,15 @@ name：`string` 目标词库名
 
 返回值：`Promise<"回收站不存在此词库" | "ok">`
 
-#### word.editor.getRecycleBinList()
+##### 16. word.editor.getRecycleBinList()
 
 查看回收站存在的词库
 
 返回值：`Promise<string[]>` 存在的词库列表
 
-### 5. word.permission [词库权限相关]
+***
+
+### word.permission [词库权限相关]
 
 词库自带一套权限系统...(虽然很简陋
 
@@ -369,7 +377,7 @@ name：`string` 目标词库名
 
 xxx.xxx.xxx这样的
 
-#### word.permission.add(uid, newPermission)
+##### 1. word.permission.add(uid, newPermission)
 
 为某人添加权限
 
@@ -379,7 +387,7 @@ newPermission：`string` 权限树
 
 返回值：`Promise<boolean | "已存在此权限">` 
 
-#### word.permission.rm(uid, permission)
+##### 2. word.permission.rm(uid, permission)
 
 删除某人的权限
 
@@ -389,7 +397,7 @@ permission：`string` 权限树
 
 返回值：`Promise<boolean | "不存在此权限">` 
 
-#### word.permission.all(uid)
+##### 3. word.permission.all(uid)
 
 查看某人的全部权限
 
@@ -397,7 +405,7 @@ uid: `string` 查询目标uid
 
 返回值：`Promise<string[]>` 所拥有权限列表
 
-#### word.permission.isHave(uid, permission)
+##### 4. word.permission.isHave(uid, permission)
 
 判断某人是否拥有某权限
 
@@ -407,7 +415,9 @@ permission：`string` 权限树
 
 返回值：`Promise<boolean>` 是否拥有
 
-### 6. word.statement [词库语法包相关]
+***
+
+### word.statement [词库语法包相关]
 
 词库的回复句中可以包括语法，`词库语法`是形如如下格式的字符串：
 
@@ -452,7 +462,7 @@ async (inData, session) => {
 
 当调用此回调后，解释器会将`(@this)`替换为回调的返回值
 
-#### word.statement.addStatement(statementName, callback)
+##### 1. word.statement.addStatement(statementName, callback)
 
 添加一个语法包
 
@@ -475,7 +485,7 @@ inData.parPack
 inData.internal
 ```
 
-##### inData.args
+**inData.args**
 
 上面我们说到语法包有`多参`，`单参`，`无参`这三种。这些参数最终会保存到`inData.args`内，当然无参时则`inData.args = []`
 
@@ -494,17 +504,17 @@ ctx.word.statement.addStatement('test', async (inData, session) => {
 // ["1233", "4566", "7899"]
 ```
 
-##### inData.matchs
+**inData.matchs**
 
 这个与后续的章节有关，我们会在下一章讲到
 
-##### inData.wordData
+**inData.wordData**
 
 此项为回复句所在的词库的信息
 
 可以通过`inData.wordData`什么的获取此库的信息
 
-##### inData.internal
+**inData.internal**
 
 拥有以下五项：
 
@@ -543,7 +553,7 @@ key: string = 配置键
 
 `inData.internal`接口读取和更新用户数据的时候，会先建立个缓存，当所有语法包解析完成后，最终才会保存数据，而`word.user.getItem`和`word.user.updateItem`这些接口是立刻读取和立刻保存
 
-##### inData.parPack
+**inData.parPack**
 
 解析功能包，在语法包中return这些项的话可以在return时达成相应的效果
 
@@ -555,17 +565,19 @@ return inData.parPack.kill() // 放弃解释当前回复句，且不保存当前
 
 这里所谓的用户数据为上面`inData.internal`的api所操作用户数据
 
-#### word.statement.rmStatement(statementName)
+##### 2. word.statement.rmStatement(statementName)
 
 删除一个语法包
 
 statementName：`string` 语法名
 
-#### word.statement.statement
+##### 3. word.statement.statement
 
 当前存在的语法包
 
-### 7. word.trigger [词库输入替换相关]
+***
+
+### word.trigger [词库输入替换相关]
 
 我们知道koishi的at的格式是这样的：
 
@@ -602,7 +614,7 @@ word.add (@) 你好呀！
 
 随后词库会进行解释器的工作。
 
-#### 注意
+##### 注意
 
 在替换之后！每次匹配到的结果，会存储在`inData.matchs`中
 
@@ -614,7 +626,7 @@ word.add (@) 你好呀！
 }
 ```
 
-#### word.trigger.addTrigger(triggerName, replaceStr, matchReg)
+##### 1. word.trigger.addTrigger(triggerName, replaceStr, matchReg)
 
 添加一个输入替换
 
@@ -626,7 +638,7 @@ matchReg：`string` 正则字符串
 
 注意！这里正则匹配的结果，会以`[triggerName]: [匹配结果]`放入到`inData.matchs`中
 
-#### word.trigger.rmTrigger(replaceStr, matchReg)
+##### 2. word.trigger.rmTrigger(replaceStr, matchReg)
 
 删除一个输入替换
 
@@ -634,17 +646,19 @@ triggerName：`string` 替换名
 
 matchReg：`string` 正则字符串
 
-#### word.trigger.trigger
+##### 3. word.trigger.trigger
 
 当前的输入替换列表
 
 返回值：`{[key: string]: { reg: string[], id: string; }}`
 
-### 8. word.tools [词库工具]
+***
+
+### word.tools [词库工具]
 
 词库工具包括操作数据库的基础api和一些简单的日常小工具
 
-#### 前提：
+##### 前提
 
 虽然使用了数据库，但是其实词库的数据库结构都是这样的类似键值对的存储方式
 
@@ -656,7 +670,7 @@ matchReg：`string` 正则字符串
 
 <br/>
 
-#### word.tools.getDB(dbName)
+##### 1. word.tools.getDB(dbName)
 
 获取一个数据库的内容
 
@@ -671,7 +685,7 @@ Promise<{
 }>
 ```
 
-#### word.tools.readDB(dbName, key)
+##### 2. word.tools.readDB(dbName, key)
 
 获取数据库某个主键所在行的data的值
 
@@ -681,7 +695,7 @@ key：`string` 查询的主键
 
 返回值：`Promise<data>` 返回这个主键对应所在行的data的值
 
-#### word.tools.removeDB(dbName, key)
+##### 3. word.tools.removeDB(dbName, key)
 
 删除某个主键所在行
 
@@ -689,7 +703,7 @@ dbName: `string` 库的名字
 
 key：`string` 所需要删除的主键
 
-#### word.tools.writeDB(dbName, key, data)
+##### 4. word.tools.writeDB(dbName, key, data)
 
 修改（或新建）某个主键的值
 
@@ -701,7 +715,7 @@ data：`any` 主键所在行的data项的值
 
 返回值：`Promise<boolean>` 成功/失败
 
-#### word.tools.randomNumber(min, max)
+##### 5. word.tools.randomNumber(min, max)
 
 获取一个随机数
 
@@ -711,9 +725,12 @@ max：`number` 随机数上限
 
 返回值：`number` 随机数
 
-### 9. word.user [词库用户相关] 
+***
 
-#### word.user.getConfig(uid)
+### word.user [词库用户相关] 
+<br>
+
+##### 1. word.user.getConfig(uid)
 
 读取用户的配置，配置都为键值对格式存储
 
@@ -721,7 +738,7 @@ uid：`string` 用户id
 
 返回值：`Promise<Record<string, string | number | string[] | number[] | Record<string, string>>>`
 
-#### word.user.setConfig(uid, key, value)
+##### 2. word.user.setConfig(uid, key, value)
 
 设置用户的配置到缓存，配置都为键值对格式存储
 
@@ -731,13 +748,13 @@ key：`string` 配置的键
 
 value：`string` 配置的值
 
-#### word.user.saveConfig()
+##### 3. word.user.saveConfig()
 
 保存设置的缓存
 
 返回值：`Promise<boolean>` 成功/失败
 
-#### word.user.setConfigForce(uid, key, value)
+##### 4. word.user.setConfigForce(uid, key, value)
 
 设置用户的配置，并直接保存到数据库，配置都为键值对格式存储
 
@@ -747,7 +764,7 @@ key：`string` 配置的键
 
 value：`string` 配置的值
 
-#### word.user.getData(uid)
+##### 5. word.user.getData(uid)
 
 获取用户背包
 
@@ -765,7 +782,7 @@ uid：`string` 用户id
 }
 ```
 
-#### word.user.getEditWord(uid)
+##### 6. word.user.getEditWord(uid)
 
 获取用户正在编辑的词库
 
@@ -773,7 +790,7 @@ uid：`string` 用户id
 
 返回值：`Promise<string>` 正在编辑的词库
 
-#### word.user.getItem(uid, cell, itemName)
+##### 7. word.user.getItem(uid, cell, itemName)
 
 从数据库中读取用户数据
 
@@ -785,7 +802,7 @@ itemName：`string` 物品名称
 
 返回值：`Promise<number | null | string[]>` 存在的数量数量或者null或是列表内容
 
-#### word.user.setEditWord(uid, newDB)
+##### 8. word.user.setEditWord(uid, newDB)
 
 设置用户正在编辑的库
 
@@ -793,7 +810,7 @@ uid: `string` 用户id
 
 newDB：`string` 需要编辑的库
 
-#### word.user.updateItem(uid, cell, itemName, itemData)
+##### 9. word.user.updateItem(uid, cell, itemName, itemData)
 
 为用户某物品的数量
 
@@ -805,7 +822,7 @@ itemName：`string` 物品名称
 
 itemData：`number | string[]` 物品数量/物品值
 
-#### word.user.updateData(uid, data)
+##### 10. word.user.updateData(uid, data)
 
 保存用户数据到数据库
 
@@ -823,6 +840,6 @@ data的格式必须为：
 } 
 ```
 
-#### word.user.saveTemp()
+##### 11. word.user.saveTemp()
 
 保存缓存中的信息到数据库

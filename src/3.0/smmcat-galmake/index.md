@@ -1,5 +1,5 @@
 ---
-outline: [2,3]
+outline: [2,5]
 ---
 
 # koishi-plugin-smmcat-galmake<br>[自助菜单]
@@ -16,8 +16,9 @@ outline: [2,3]
 `title.text` 中的内容代表该层级菜单的标题
 
 只要上述文件放置在对应文件夹中，就会有对应的效果
+<br>
 
-### 演示用模板
+##### 1. 演示用模板
 
 启用插件后，插件首次会在文件目录下生成演示内容以供参考
 
@@ -25,8 +26,9 @@ outline: [2,3]
   <img src="https://forum.koishi.xyz/uploads/default/original/2X/3/3a44f4de609c771bb365e2bcba9470d4d547e2eb.png">
   <figcaption>演示图片</figcaption>
 </figure>
-  
-### 使用演示 GIF
+<br>
+
+##### 2. 使用演示 GIF
 
 通过使用 **/自助菜单** 指令，进入循环查询菜单操作流程（可随时退出），插件自带 **面包屑** 导航
 
@@ -34,8 +36,9 @@ outline: [2,3]
   <img src="https://forum.koishi.xyz/uploads/default/original/2X/3/3c36dc2c9008dbac9b95811a119550fc0689db1c.gif">
   <figcaption>演示GIF</figcaption>
 </figure>
+<br>
 
-### smmの转义符
+##### 3. smmの转义符
 
 增加转义符的效果
 
@@ -47,14 +50,15 @@ outline: [2,3]
 ```
 
 Ps:目前该功能仅为尝鲜更新，内容不多
+<br>
 
-### 可选功能
+##### 4. 可选功能
 
 word-core和word-core-grammar-basic是这个插件的附属插件。当他们被启用时。可以对`result.text` 与 `title.text` 中的词库语法进行解析
 
 ## 其他
 
-### 钓鱼小游戏Demo
+##### 钓鱼小游戏Demo
 
 - 内容：
 
