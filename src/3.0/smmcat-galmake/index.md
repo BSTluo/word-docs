@@ -16,7 +16,6 @@ outline: [2,5]
 `title.text` 中的内容代表该层级菜单的标题
 
 只要上述文件放置在对应文件夹中，就会有对应的效果
-<br>
 
 ##### 1. 演示用模板
 
@@ -26,7 +25,6 @@ outline: [2,5]
   <img src="https://forum.koishi.xyz/uploads/default/original/2X/3/3a44f4de609c771bb365e2bcba9470d4d547e2eb.png">
   <figcaption>演示图片</figcaption>
 </figure>
-<br>
 
 ##### 2. 使用演示 GIF
 
@@ -36,7 +34,6 @@ outline: [2,5]
   <img src="https://forum.koishi.xyz/uploads/default/original/2X/3/3c36dc2c9008dbac9b95811a119550fc0689db1c.gif">
   <figcaption>演示GIF</figcaption>
 </figure>
-<br>
 
 ##### 3. smmの转义符
 
@@ -50,7 +47,6 @@ outline: [2,5]
 ```
 
 Ps:目前该功能仅为尝鲜更新，内容不多
-<br>
 
 ##### 4. 可选功能
 

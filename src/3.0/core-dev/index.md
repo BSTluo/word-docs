@@ -728,7 +728,6 @@ max：`number` 随机数上限
 ***
 
 ### word.user [词库用户相关] 
-<br>
 
 ##### 1. word.user.getConfig(uid)
 

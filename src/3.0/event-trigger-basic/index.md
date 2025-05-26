@@ -46,7 +46,6 @@ outline: [2,5]
 *corn格式在线生成器：[https://cron.qqe2.com/](https://cron.ciding.cc/)*
 
 ### 指令
-<br>
 
 ##### 1. 创建定时任务
 
